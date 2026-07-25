@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — dusk cinema: deep charcoal house, marquee amber, ticket-stub clay & teal */
+  --color-house-950: #121014;
+  --color-house-900: #19161b;
+  --color-house-800: #221e24;
+  --color-house-700: #2d2830;
+  --color-house-600: #3c3640;
+  --color-house-500: #5a5260;
+  --color-marquee-400: #f0b649;
+  --color-marquee-500: #e3a23c;
+  --color-marquee-600: #c17f24;
+  --color-clay-400: #d1735b;
+  --color-clay-500: #b85c4a;
+  --color-teal-400: #64a89c;
+  --color-teal-500: #4f8a82;
+  --color-cream-100: #f7f3ea;
+  --color-cream-200: #efe8db;
+  --color-cream-400: #cfc4b0;
+  --color-cream-600: #a79c8f;
+
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  background: var(--color-house-950);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-house-950);
+  color: var(--color-cream-100);
+  min-height: 100vh;
+}
+
+/* Sprocket-hole film strip divider, used between survey sections */
+.filmstrip-divider {
+  position: relative;
+  height: 22px;
+  background-image:
+    radial-gradient(circle, var(--color-house-950) 3.5px, transparent 3.6px);
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: repeat-x;
+  background-color: var(--color-house-700);
+  border-radius: 2px;
+}
+
+/* Ticket-stub torn edge for movie cards */
+.ticket-edge {
+  --edge-size: 14px;
+  mask-image: radial-gradient(circle at var(--edge-size) 50%, transparent var(--edge-size), black calc(var(--edge-size) + 0.5px));
+  mask-repeat: repeat-y;
+  mask-position: left center;
+  mask-size: var(--edge-size) calc(var(--edge-size) * 2);
+}
+
+::selection {
+  background: var(--color-marquee-500);
+  color: var(--color-house-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-marquee-400);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
